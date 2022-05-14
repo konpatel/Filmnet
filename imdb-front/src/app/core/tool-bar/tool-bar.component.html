@@ -1,0 +1,63 @@
+<mat-toolbar>
+  <mat-toolbar-row fxLayout="row" fxLayoutAlign="start center" class="main-toolbar-row">
+    <div fxFlex="100">
+      <div fxFlex="80" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="5%">
+        <div *ngIf="mobileSize">
+          <button mat-icon-button (click)="openSidenav()">
+            <mat-icon>menu</mat-icon>
+          </button>
+        </div>
+        <div (click)="navigateToHomePage()" class="toolbar-logo-btn" fxLayoutAlign="start center"
+             fxLayoutAlign.lt-sm="center center">
+          <img class="logo" src="/assets/logo.png">
+        </div>
+        <div *ngIf="!mobileSize" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="7%">
+          <a (click)="clickLinks()" [routerLink]="['/movies']">Movies</a>
+          <a (click)="clickLinks()" [routerLink]="['/people', 'Acting']">Actors</a>
+          <a (click)="clickLinks()" [routerLink]="['/people', 'Director']">Directors</a>
+          <app-security [roles]="'ROLE_USER,ROLE_ADMIN'" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="7%">
+            <a (click)="clickLinks()" [routerLink]="['/personal-list']">Watchlist</a>
+          </app-security>
+        </div>
+      </div>
+
+      <div fxFlex="20" fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="2%">
+        <button *ngIf="isLoggedIn() && !mobileSize" mat-mini-fab (click)="navigateToNotificationPage()">
+          <mat-icon [matBadgeHidden]="notificationsList.length ===0" class="badge-icon"
+                    [matBadge]="notificationsList.length" matBadgeColor="warn">notifications
+          </mat-icon>
+        </button>
+
+        <button mat-raised-button *ngIf="!isLoggedIn() && !mobileSize" mat-button (click)="login();clickLinks();">
+          Sign in
+        </button>
+
+        <button  *ngIf="isLoggedIn() && !mobileSize" mat-mini-fab [matMenuTriggerFor]="menu">
+          <mat-icon class="badge-icon">person</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu" xPosition="before" yPosition="below"
+                  class="menu-class">
+          <button mat-menu-item (click)="logout()">
+            <mat-icon class="badge-icon">logout</mat-icon>
+            <span>Sign out</span>
+          </button>
+          <button mat-menu-item (click)="openConfirmDialog()">
+            <mat-icon class="badge-icon">close</mat-icon>
+            <span>Deactivate account</span>
+          </button>
+          <app-security [roles]="'ROLE_ADMIN'">
+            <button mat-menu-item (click)="navigateToAdminPage()">
+              <mat-icon class="badge-icon">control_camera</mat-icon>
+              <span>Control panel</span>
+            </button>
+          </app-security>
+        </mat-menu>
+      </div>
+    </div>
+  </mat-toolbar-row>
+
+  <mat-toolbar-row class="third-toolbar-row">
+    <app-search #searchComp fxFlex="100"></app-search>
+  </mat-toolbar-row>
+
+</mat-toolbar>

@@ -1,0 +1,19 @@
+<div fxLayout="row" fxLayoutAlign="start start" style="width: 100%">
+  <mat-sidenav-container style="width: 100%">
+    <mat-sidenav #sidenav [mode]="'over'">
+      <app-navigation-list [sidenav]="sidenav"></app-navigation-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <app-tool-bar (SideNavToggle)="sidenav.toggle()"></app-tool-bar>
+      <router-outlet></router-outlet>
+      <app-footer></app-footer>
+      <app-loader></app-loader>
+      <button mat-mini-fab *ngIf="isShow" (click)="gotoTop()">
+        <mat-icon>arrow_upward</mat-icon>
+      </button>
+
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
+

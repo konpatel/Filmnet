@@ -1,0 +1,76 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import "styles/variables";
+@import "styles/button";
+@import "styles/mat-card";
+@import "styles/mat-form-field";
+@import "styles/dialog";
+@import "styles/mat-paginator";
+@import "styles/mat-checkbox";
+@import "styles/mat-menu";
+
+html, body {
+  height: 100%;
+  background-color: $backgroundColor;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+a {
+  cursor: pointer;
+}
+
+.mat-progress-bar-fill::after {
+  background-color: $logoMainColor !important;
+}
+
+mat-table .mat-mini-fab.mat-accent {
+  background-color: $logoMainColor !important;
+}
+
+.mat-header-cell {
+  font-size: 13px;
+  font-weight: 600;
+  color: $simpleColor;
+  background-color: $menuColor;
+}
+
+.mat-cell, .mat-footer-cell {
+  color: $simpleColor;
+  background-color: $menuColor;
+}
+
+.mat-badge-content {
+  background: $logoMainColor !important;
+}
+
+.mat-drawer-inner-container {
+  background-color: $backgroundColor;
+}
+
+.toast-container .ngx-toastr {
+  box-shadow: none !important;
+}
+
+.p-carousel-next, .p-carousel-prev {
+  box-shadow: none !important;
+  border-width: 5px !important;
+}
+
+.p-carousel .p-carousel-indicators .p-carousel-indicator {
+  display: none;
+}
+
+p-carousel {
+  img {
+    cursor: pointer;
+  }
+}
+
+.p-carousel .p-carousel-content .p-carousel-prev, .p-carousel .p-carousel-content .p-carousel-next {
+  color: $logoMainColor!important;
+}
+

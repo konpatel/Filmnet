@@ -1,0 +1,58 @@
+<form [formGroup]="reviewForm" class="post-review-class" fxLayout="row wrap"
+      fxLayoutAlign="space-around center">
+  <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="start center">
+    <div class="header-class">Rate this movie:</div>
+    <div class="rating-class">
+      <app-rating *ngFor="let index of stars" [index]="index" (click)="selected = index"
+                  [selected]="selected"
+                  (mouseover)="hover = index" (mouseout)="hover = -1"
+                  [hover]="hover"></app-rating>
+    </div>
+  </div>
+  <mat-form-field class="textarea-class" appearance="outline" fxFlex="100">
+    <mat-label>Write your review!</mat-label>
+    <textarea matInput [formControlName]="'review'"></textarea>
+  </mat-form-field>
+  <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="end center">
+    <button fxFlex.lt-md="100" mat-raised-button (click)="postReview()" class="post-button">Add review</button>
+  </div>
+</form>
+
+<div class="review-view-class">
+  <div *ngFor="let review of movie?.reviews" fxLayout="column" fxLayoutAlign="space-around stretch">
+    <mat-card>
+      <div>
+        <div mat-card-avatar></div>
+        <div fxLayout="row" fxFlex="100" fxLayoutAlign="space-between start">
+          <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="5%">
+              <span class="author-class">{{review?.author}}</span>
+              <div fxLayout="row" fxLayoutAlign="start center">
+                <span class="num-class">{{review.rating}}</span>
+                <mat-icon class="star-class" *ngIf="review?.rating">star</mat-icon>
+              </div>
+          </div>
+
+
+          <div *ngIf="existsDeleteButton | deleteButton: review: username">
+            <button *ngIf="!mobileSize" mat-icon-button (click)="openConfirmDialog(review.id)" class="delete-button">
+              <mat-icon class="delete-icon">delete</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+      <mat-card-content>
+        <p>
+          {{review.content}}
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <div *ngIf="existsDeleteButton | deleteButton: review: username">
+        <button *ngIf="mobileSize" fxFlex="100" mat-flat-button (click)="openConfirmDialog(review.id)">
+          Delete
+        </button>
+      </div>
+
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

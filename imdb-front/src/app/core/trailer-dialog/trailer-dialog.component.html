@@ -1,0 +1,13 @@
+<div class="common-card">
+  <div fxLayout="row" fxLayoutAlign="space-between center">
+    <span class="title">Trailer</span>
+    <div>
+      <button mat-flat-button class="exit-button" (click)="close()">
+        <mat-icon>clear</mat-icon>
+      </button>
+    </div>
+  </div>
+  <iframe
+    [src]="createURL() | safe"
+    frameborder="0" allowfullscreen></iframe>
+</div>

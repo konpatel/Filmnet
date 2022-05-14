@@ -1,0 +1,21 @@
+<div class="header-class">
+  <mat-icon style="margin-right: 1vm">people</mat-icon>
+  {{title}}
+</div>
+<div fxLayout="row wrap" fxLayoutAlign="space-around center" class="search-results-container">
+  <div class="middle" fxLayout="row wrap" fxFlex="100">
+    <mat-card class="info-widget" *ngFor="let crew of popularPeopleList" (click)="navigateToDetailsPage(crew.id)">
+      <mat-card-content>
+        <img mat-card-image [src]='"https://www.themoviedb.org/t/p/w220_and_h330_face"+crew.profilePath'>
+        <mat-label>{{crew.name}}</mat-label>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div fxFlex="100" *ngIf="popularPeopleList?.length != 0" class="paginator-class">
+    <mat-paginator [length]="length"
+                   [pageSize]="pageSize"
+                   [pageIndex]="pageIndex"
+                   (page)="handlePage($event)">
+    </mat-paginator>
+  </div>
+</div>

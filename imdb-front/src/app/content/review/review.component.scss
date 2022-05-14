@@ -1,0 +1,94 @@
+@import "src/styles/variables";
+
+.header-image {
+  background-color: $logoMainColor;
+  background-size: cover;
+}
+
+.mat-card-avatar {
+  height: 30px;
+  width: 30px;
+  background-color: $logoMainColor;
+  background-size: cover;
+}
+
+mat-card {
+  background-color: $menuColor;
+  color: $simpleColor;
+}
+
+.star-class, .num-class {
+  color: $logoSecondColor;
+  font-size: 1em !important;
+}
+
+
+.star-class {
+  padding-top: 5px;
+}
+
+.author-class {
+  padding-left: 10px;
+  color: $simpleColor;
+  font-size: 1em !important;
+}
+
+mat-card-content {
+  font-size: 12px !important;
+}
+
+textarea.mat-input-element {
+  height: 6em;
+}
+
+.post-button {
+  width: 15%;
+  margin-bottom: 1.4em;
+}
+
+.post-review-class {
+  padding-bottom: 1%;
+}
+
+.header-class {
+  color: $logoMainColor;
+  font-size: 1em;
+}
+
+.rating-class {
+  padding-top: 2%;
+  padding-left: 1%;
+}
+
+.delete-icon {
+  color: $simpleColor;
+  font-size: 1.5em !important;
+}
+
+.delete-button {
+ top: -5px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  overflow-y: scroll;
+  background: grey;
+  box-shadow: inset 0 0 4px #707070;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $simpleColor;
+  border-radius: 5px;
+}
+
+p {
+  font-size: 1.2em;
+}
+
+@media all and (max-width: 600px) {
+  p {
+    padding-top: 4%;
+  }
+}
+

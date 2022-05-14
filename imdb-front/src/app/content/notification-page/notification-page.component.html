@@ -1,0 +1,21 @@
+<div class="header-class">
+  <mat-icon style="margin-right: 1vm">notifications</mat-icon>
+  Your notifications
+</div>
+<div *ngIf="notificationList.length > 0" fxLayout="row wrap" fxLayoutAlign="space-around center"
+     class="search-results-container">
+  <div class="middle" fxLayout="row wrap" fxFlex="100">
+    <mat-card class="info-widget" *ngFor="let notification of notificationList"
+              (click)="navigateToDetailsPage(notification.id)">
+      <mat-card-content>
+        <img mat-card-image
+             [src]='"https://www.themoviedb.org/t/p/w220_and_h330_face"+notification.posterPath'>
+        <mat-label>{{notification.title}}</mat-label>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
+<div *ngIf="noDataMessage" class="no-results-class">
+  No liked movies found!
+</div>

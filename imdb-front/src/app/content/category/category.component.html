@@ -1,0 +1,39 @@
+<div class="header-class" *ngIf="categoryId=== '12'">Adventure Movies</div>
+<div class="header-class" *ngIf="categoryId=== '878'">Science Fiction Movies</div>
+<div class="header-class" *ngIf="categoryId=== '10749'">Romance Movies</div>
+<div class="header-class" *ngIf="categoryId=== '14'">Fantasy Movies</div>
+<div class="header-class" *ngIf="categoryId=== '27'">Horror Movies</div>
+<div class="header-class" *ngIf="categoryId=== '16'">Animation Movies</div>
+<div class="header-class" *ngIf="categoryId=== '18'">Drama Movies</div>
+<div class="header-class" *ngIf="categoryId=== '28'">Action Movies</div>
+<div class="header-class" *ngIf="categoryId=== '35'">Comedy Movies</div>
+<div class="header-class" *ngIf="categoryId=== '36'">History Movies</div>
+<div class="header-class" *ngIf="categoryId=== '37'">Western Movies</div>
+<div class="header-class" *ngIf="categoryId=== '53'">Thriller Movies</div>
+<div class="header-class" *ngIf="categoryId=== '80'">Crime Movies</div>
+<div class="header-class" *ngIf="categoryId=== '99'">Documentary Movies</div>
+<div class="header-class" *ngIf="categoryId=== '9648'">Mystery Movies</div>
+<div class="header-class" *ngIf="categoryId=== '10402'">Musical Movies</div>
+<div class="header-class" *ngIf="categoryId=== '10751'">Family Movies</div>
+<div class="header-class" *ngIf="categoryId=== '10752'">War Movies</div>
+<div class="header-class" *ngIf="categoryId=== '10770'">TV Movies</div>
+<div fxLayout="row wrap" fxLayoutAlign="space-around center" class="search-results-container">
+  <div *ngIf="movieList.length>0" class="middle" fxLayout="row wrap" fxFlex="100">
+    <mat-card class="info-widget" *ngFor="let movie of movieList" (click)="navigateToDetailsPage(movie.id)">
+      <mat-card-content>
+        <img mat-card-image [src]='"https://www.themoviedb.org/t/p/w220_and_h330_face"+movie.posterPath'>
+        <mat-label>{{movie.title}}</mat-label>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div fxFlex="100" *ngIf="movieList?.length != 0">
+    <mat-paginator [length]="length"
+                   [pageSize]="pageSize"
+                   [pageIndex]="pageIndex"
+                   (page)="handlePage($event)">
+    </mat-paginator>
+  </div>
+  <div *ngIf="movieList.length === 0" class="no-results-class">
+    No results found!
+  </div>
+</div>

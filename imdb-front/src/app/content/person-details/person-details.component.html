@@ -1,0 +1,54 @@
+<div fxLayout="column" fxLayoutAlign="start stretch">
+  <div fxLayout="row" fxLayoutAlign="start start" fxLayout.lt-md="column" fxLayoutAlign.lt-md="start center"
+       class="movie-class">
+    <div class="poster-class" fxFlex="40">
+      <img class="person-image" [src]='"https://www.themoviedb.org/t/p/w220_and_h330_face"+crew?.profilePath'>
+    </div>
+    <div class="description-class" fxLayout="column" fxLayoutAlign="start" fxLayoutAlign.lt-md="center"
+         fxLayoutGap="6%">
+      <span class="movie-title">{{crew?.name}}</span>
+
+      <div fxLayout="column" fxLayoutAlign="start" fxLayoutGap="1%">
+        <span class="paragraph-class-title">Place of birth</span>
+        <span class="paragraph-class-content">{{crew?.placeOfBirth}}</span>
+      </div>
+
+      <div fxLayout="column" fxLayoutAlign="start" fxLayoutGap="1%">
+        <span class="paragraph-class-title">Born</span>
+        <span *ngIf="crew?.deathday" class="paragraph-class-content">({{crew?.birthday | date: 'dd/MM/yyyy'}}
+          - {{crew?.deathday | date: 'dd/MM/yyyy'}})</span>
+        <span *ngIf="!crew?.deathday" class="paragraph-class-content">({{crew?.birthday | date: 'dd/MM/yyyy'}})</span>
+      </div>
+
+      <div fxLayout="column" fxLayoutAlign="start" fxLayoutGap="1%" class="mobile-class">
+        <div class="paragraph-class-title">Popularity</div>
+        <span class="paragraph-class-content">{{percent | mathFloor}}%</span>
+        <mat-progress-bar mode="determinate" value="{{percent}}"></mat-progress-bar>
+      </div>
+
+      <div fxLayout="column" fxLayoutAlign="start" fxLayoutGap="1%">
+        <span class="paragraph-class-title">Biography</span>
+        <span *ngIf="crew?.biography" class="paragraph-class-content">{{crew?.biography}}</span>
+        <span *ngIf="!crew?.biography" class="paragraph-class-content">No biography yet!</span>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="review-class">
+    <div class="paragraph-class-title" *ngIf="crewMoviesList?.length > 0">{{crew?.name}}'s
+      movies
+    </div>
+    <div *ngIf="crewMoviesList?.length > 0" class="movie-list">
+      <mat-card class="info-widget" *ngFor="let movie of crewMoviesList;let i=index"
+                (click)="navigateToDetailsPage(movie.id)">
+        <mat-card-content>
+          <img mat-card-image [src]='"https://www.themoviedb.org/t/p/w220_and_h330_face"+movie.posterPath'>
+        </mat-card-content>
+        <mat-label>{{movie.title}}</mat-label>
+      </mat-card>
+    </div>
+  </div>
+
+</div>

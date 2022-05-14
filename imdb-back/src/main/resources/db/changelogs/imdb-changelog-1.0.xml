@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.0.xsd">
+
+  <property name="type.varchar" value="varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci"
+            dbms="mariadb,mysql"/>
+  <property name="type.varchar" value="varchar(250)"
+            dbms="postgresql"/>
+  <property name="type.big.varchar" value="varchar(4000) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci"
+            dbms="mariadb,mysql"/>
+  <property name="type.big.varchar" value="varchar(4000)"
+            dbms="postgresql"/>
+  <property name="type.boolean" value="tinyint" dbms="mariadb,mysql"/>
+  <property name="type.boolean" value="boolean" dbms="postgresql"/>
+  <property name="type.bigint" value="bigint" dbms="mariadb,mysql,postgresql"/>
+  <property name="type.number" value="integer" dbms="mariadb,mysql,postgresql"/>
+  <property name="type.number.double" value="double" dbms="mariadb,mysql,postgresql"/>
+  <property name="type.date" value="date" dbms="mariadb,mysql,postgresql"/>
+  <property name="now" value="now()" dbms="mariadb,mysql,postgresql"/>
+
+
+  <changeSet id="IHU_IMDB_1" author="IHU">
+    <createTable tableName="FILMNET_USERS">
+      <column name="id" type="${type.varchar}">
+        <constraints primaryKey="true" nullable="false"/>
+      </column>
+      <column name="first_name" type="${type.varchar}">
+        <constraints nullable="false"/>
+      </column>
+      <column name="last_name" type="${type.varchar}">
+        <constraints nullable="false"/>
+      </column>
+      <column name="username" type="${type.varchar}">
+        <constraints nullable="false" unique="true"/>
+      </column>
+      <column name="email" type="${type.varchar}">
+        <constraints nullable="false" unique="true"/>
+      </column>
+      <column name="created_on" type="${type.date}"/>
+    </createTable>
+
+  </changeSet>
+
+  <changeSet id="IHU_IMDB_2" author="IHU">
+    <createTable tableName="GENRES">
+      <column name="id" type="${type.number}">
+        <constraints primaryKey="true" nullable="false"/>
+      </column>
+      <column name="name" type="${type.varchar}">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+
+    <createTable tableName="VIDEOS">
+      <column name="id" type="${type.varchar}">
+        <constraints primaryKey="true" nullable="false"/>
+      </column>
+      <column name="param" type="${type.varchar}">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+
+    <createTable tableName="CREW">
+      <column name="id" type="${type.number}">
+        <constraints primaryKey="true" nullable="false"/>
+      </column>
+      <column name="name" type="${type.varchar}">
+        <constraints nullable="false"/>
+      </column>
+      <column name="gender" type="${type.varchar}"/>
+      <column name="popularity" type="${type.number.double}"/>
+      <column name="profile_path" type="${type.varchar}"/>
+      <column name="known_for_department" type="${type.varchar}"/>
+      <column name="job" type="${type.varchar}"/>
+    </createTable>
+
+    <createTable tableName="MOVIES">
+      <column name="id" type="${type.number}">
+        <constraints primaryKey="true" nullable="false"/>
+      </column>
+      <column name="title" type="${type.varchar}"/>
+      <column name="imdb_id" type="${type.varchar}"/>
+      <column name="budget" type="${type.bigint}"/>
+      <column name="overview" type="${type.big.varchar}"/>
+      <column name="poster_path" type="${type.varchar}"/>
+      <column name="up_coming" type="${type.boolean}"/>
+      <column name="release_date" type="${type.varchar}"/>
+      <column name="original_language" type="${type.varchar}"/>
+      <column name="run_time" type="${type.number}"/>
+      <column name="vote_average" type="${type.number.double}"/>
+      <column name="vote_count" type="${type.number}"/>
+      <column name="popularity" type="${type.number.double}"/>
+      <column name="video_id" type="${type.varchar}"/>
+    </createTable>
+    <addForeignKeyConstraint baseColumnNames="video_id"
+                             baseTableName="MOVIES"
+                             constraintName="FK_VIDEO"
+                             referencedColumnNames="id"
+                             referencedTableName="VIDEOS"
+                             onDelete="CASCADE"/>
+
+    <createTable tableName="REVIEWS">
+      <column name="id" type="${type.varchar}">
+        <constraints primaryKey="true" nullable="false"/>
+      </column>
+      <column name="author" type="${type.varchar}">
+        <constraints nullable="false"/>
+      </column>
+      <column name="content" type="${type.big.varchar}">
+        <constraints nullable="false"/>
+      </column>
+      <column name="created_date" type="${type.varchar}"/>
+      <column name="rating" type="${type.number.double}"/>
+    </createTable>
+
+  </changeSet>
+
+  <changeSet id="IHU_IMDB_4" author="IHU">
+    <createTable tableName="USER_LIKED_MOVIES">
+      <column name="user_id" type="${type.varchar}">
+        <constraints nullable="false"/>
+      </column>
+      <column name="movie_id" type="${type.number}">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+    <addForeignKeyConstraint baseColumnNames="user_id"
+                             baseTableName="USER_LIKED_MOVIES"
+                             constraintName="FK_USER_TO_LIKED_MOVIE"
+                             referencedColumnNames="id"
+                             referencedTableName="FILMNET_USERS"
+                             onDelete="CASCADE"/>
+    <addForeignKeyConstraint baseColumnNames="movie_id"
+                             baseTableName="USER_LIKED_MOVIES"
+                             constraintName="FK_LIKED_MOVIES_TO_USER"
+                             referencedColumnNames="id"
+                             referencedTableName="MOVIES"
+                             onDelete="CASCADE"/>
+
+
+    <createTable tableName="MOVIES_TO_GENRES">
+      <column name="movie_id" type="${type.number}">
+        <constraints nullable="false"/>
+      </column>
+      <column name="genre_id" type="${type.number}">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+    <addForeignKeyConstraint baseColumnNames="movie_id"
+                             baseTableName="MOVIES_TO_GENRES"
+                             constraintName="FK_MOVIE_MOVIE_TO_GENRE"
+                             referencedColumnNames="id"
+                             referencedTableName="MOVIES"
+                             onDelete="CASCADE"/>
+    <addForeignKeyConstraint baseColumnNames="genre_id"
+                             baseTableName="MOVIES_TO_GENRES"
+                             constraintName="FK_GENRE_MOVIE_TO_GENRE"
+                             referencedColumnNames="id"
+                             referencedTableName="GENRES"
+                             onDelete="CASCADE"/>
+
+    <createTable tableName="MOVIES_TO_CREW">
+      <column name="movie_id" type="${type.number}">
+        <constraints nullable="false"/>
+      </column>
+      <column name="crew_id" type="${type.number}">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+    <addForeignKeyConstraint baseColumnNames="movie_id"
+                             baseTableName="MOVIES_TO_CREW"
+                             constraintName="FK_MOVIE_MOVIE_TO_CREW"
+                             referencedColumnNames="id"
+                             referencedTableName="MOVIES"
+                             onDelete="CASCADE"/>
+    <addForeignKeyConstraint baseColumnNames="crew_id"
+                             baseTableName="MOVIES_TO_CREW"
+                             constraintName="FK_CREW_MOVIE_TO_CREW"
+                             referencedColumnNames="id"
+                             referencedTableName="CREW"
+                             onDelete="CASCADE"/>
+
+  </changeSet>
+
+  <changeSet id="IHU_IMDB_5" author="IHU">
+    <createIndex tableName="GENRES" indexName="index_genre_name">
+      <column name="name"/>
+    </createIndex>
+    <createIndex tableName="MOVIES" indexName="index_title">
+      <column name="title"/>
+    </createIndex>
+    <createIndex tableName="CREW" indexName="index_crew_name">
+      <column name="name"/>
+    </createIndex>
+  </changeSet>
+
+  <changeSet id="IHU_IMDB_6" author="IHU">
+    <createTable tableName="AUTH_USER">
+      <column name="id" type="${type.varchar}">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="username" type="${type.varchar}"/>
+      <column name="password" type="${type.varchar}"/>
+      <column name="active" type="${type.boolean}"/>
+    </createTable>
+
+    <createTable tableName="ROLES">
+      <column name="id" type="${type.varchar}">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="name" type="${type.varchar}"/>
+    </createTable>
+
+    <createTable tableName="AUTH_TO_ROLE">
+      <column name="auth_id" type="${type.varchar}">
+        <constraints nullable="false"/>
+      </column>
+      <column name="role_id" type="${type.varchar}">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+    <addForeignKeyConstraint baseColumnNames="auth_id"
+                             baseTableName="AUTH_TO_ROLE"
+                             constraintName="FK_AUTH_USER_USER_ROLE"
+                             referencedColumnNames="id"
+                             referencedTableName="AUTH_USER"
+                             onDelete="CASCADE"/>
+    <addForeignKeyConstraint baseColumnNames="role_id"
+                             baseTableName="AUTH_TO_ROLE"
+                             constraintName="FK_ROLE_AUTH_USER_ROLE"
+                             referencedColumnNames="id"
+                             referencedTableName="ROLES"
+                             onDelete="CASCADE"/>
+  </changeSet>
+
+  <changeSet id="IHU_IMDB_7" author="IHU">
+    <insert tableName="ROLES">
+      <column name="id" value="984578ka-9809-4db3-9132-2ws34r5tr567"/>
+      <column name="name" value="ROLE_USER"/>
+    </insert>
+  </changeSet>
+
+  <changeSet author="IHU_IMDB_8" id="IHU">
+    <addColumn tableName="FILMNET_USERS">
+      <column name="auth_user_id"
+              type="${type.varchar}"/>
+    </addColumn>
+    <addForeignKeyConstraint baseTableName="FILMNET_USERS" baseColumnNames="auth_user_id" constraintName="FK_AUTH_USER"
+                             referencedTableName="AUTH_USER"
+                             referencedColumnNames="id" onDelete="CASCADE"/>
+  </changeSet>
+
+  <changeSet id="IHU_IMDB_9" author="IHU">
+    <addColumn tableName="REVIEWS">
+      <column name="users_id"
+              type="${type.varchar}"/>
+    </addColumn>
+    <addColumn tableName="REVIEWS">
+      <column name="movie_id"
+              type="${type.number}"/>
+    </addColumn>
+    <addForeignKeyConstraint baseTableName="REVIEWS" baseColumnNames="users_id" constraintName="FK_USER_REVIEW"
+                             referencedTableName="FILMNET_USERS"
+                             referencedColumnNames="id" onDelete="CASCADE"/>
+    <addForeignKeyConstraint baseTableName="REVIEWS" baseColumnNames="movie_id" constraintName="FK_MOVIE_REVIEW"
+                             referencedTableName="MOVIES"
+                             referencedColumnNames="id" onDelete="CASCADE"/>
+  </changeSet>
+
+  <changeSet id="IHU_IMDB_10" author="IHU">
+    <addColumn tableName="CREW">
+      <column name="biography"
+              type="${type.big.varchar}"/>
+    </addColumn>
+    <addColumn tableName="CREW">
+      <column name="birthday"
+              type="${type.varchar}"/>
+    </addColumn>
+    <addColumn tableName="CREW">
+      <column name="deathday"
+              type="${type.varchar}"/>
+    </addColumn>
+    <addColumn tableName="CREW">
+      <column name="place_of_birth"
+              type="${type.varchar}"/>
+    </addColumn>
+  </changeSet>
+
+  <changeSet id="IHU_IMDB_11" author="IHU">
+    <insert tableName="ROLES">
+      <column name="id" value="984578ka-9809-4db3-9132-2w567ty6u876h"/>
+      <column name="name" value="ROLE_ADMIN"/>
+    </insert>
+  </changeSet>
+
+  <changeSet id="IHU_IMDB_12" author="IHU">
+    <createTable tableName="USER_TOKEN">
+      <column name="id" type="${type.varchar}">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="auth_user_id" type="${type.varchar}">
+        <constraints nullable="false"/>
+      </column>
+      <column name="created_on" type="${type.date}"/>
+      <column name="expired_date" type="${type.date}"/>
+      <column name="token" type="${type.varchar}"/>
+    </createTable>
+    <addForeignKeyConstraint baseColumnNames="auth_user_id"
+                             baseTableName="USER_TOKEN"
+                             constraintName="FK_AUTH_USER_ID"
+                             referencedColumnNames="id"
+                             referencedTableName="AUTH_USER"
+    />
+  </changeSet>
+
+  <changeSet id="IHU_IMDB_13" author="IHU">
+    <insert tableName="AUTH_USER">
+      <column name="id" value="9e998d9a-d0ac-4687-a344-63765868367a"/>
+      <column name="username" value="filmnet@outlook.com.gr"/>
+      <column name="password" value="$2a$12$OB7kBhzhqeckLK6wV.x2Aup/djyLMEYPVWJzPm9KL7V3I0dH2Ed/S"/>
+      <column name="active" value="1"/>
+    </insert>
+
+    <insert tableName="FILMNET_USERS">
+      <column name="id" value="ea1a0d5c-ac61-4c2f-8334-8626ea700011"/>
+      <column name="first_name" value="Ihu"/>
+      <column name="last_name" value="Ihu"/>
+      <column name="username" value="ihumember"/>
+      <column name="email" value="filmnet@outlook.com.gr"/>
+      <column name="auth_user_id" value="9e998d9a-d0ac-4687-a344-63765868367a"/>
+      <column name="created_on" valueDate="${now}"/>
+    </insert>
+
+    <insert tableName="AUTH_TO_ROLE">
+      <column name="auth_id" value="9e998d9a-d0ac-4687-a344-63765868367a"/>
+      <column name="role_id" value="984578ka-9809-4db3-9132-2w567ty6u876h"/>
+    </insert>
+  </changeSet>
+
+  <changeSet id="IHU_IMDB_14" author="IHU">
+    <createIndex tableName="GENRES" indexName="index_genre_id">
+      <column name="id"/>
+    </createIndex>
+  </changeSet>
+
+  <changeSet id="IHU_IMDB_15" author="IHU">
+    <dropIndex indexName="index_genre_id"
+               tableName="GENRES"/>
+    <dropIndex indexName="index_genre_name"
+               tableName="GENRES"/>
+    <dropIndex indexName="index_title"
+               tableName="MOVIES"/>
+    <dropIndex indexName="index_crew_name"
+               tableName="CREW"/>
+  </changeSet>
+
+  <changeSet id="IHU_IMDB_16" author="IHU">
+    <createIndex indexName="idx_movie_genre"
+                 tableName="MOVIES_TO_GENRES">
+      <column name="movie_id" type="${type.number}"/>
+      <column name="genre_id" type="${type.number}"/>
+    </createIndex>
+  </changeSet>
+
+  <changeSet id="IHU_IMDB_17" author="IHU">
+    <dropIndex indexName="idx_movie_genre"
+               tableName="MOVIES_TO_GENRES"/>
+    <createIndex indexName="idx_movie_id"
+                 tableName="MOVIES">
+      <column name="id" type="${type.number}"/>
+    </createIndex>
+
+    <createIndex indexName="idx_genre_movie"
+                 tableName="GENRES">
+      <column name="id" type="${type.number}"/>
+    </createIndex>
+  </changeSet>
+
+  <changeSet id="IHU_IMDB_18" author="IHU">
+    <dropIndex indexName="idx_movie_id"
+               tableName="MOVIES"/>
+    <dropIndex indexName="idx_genre_movie"
+               tableName="GENRES"/>
+  </changeSet>
+
+</databaseChangeLog>

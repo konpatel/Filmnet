@@ -1,0 +1,72 @@
+@import "src/styles/variables";
+
+.main-toolbar-row {
+  background-color: $menuColor;
+  z-index: 100;
+  height: 25%;
+}
+
+.toolbar-logo-btn {
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.main-toolbar-row a {
+  color: $simpleColor;
+  text-decoration: none;
+}
+
+.main-toolbar-row a:hover {
+  color: $logoMainColor;
+}
+
+.third-toolbar-row {
+  height: 20%;
+  background-color: $menuColor;
+  padding-right: 15%;
+  padding-left: 15%;
+}
+
+
+mat-icon {
+  color: $simpleColor;
+}
+
+.badge-icon, .person-icon {
+  color: $logoSecondColor;
+}
+
+span {
+  color: $simpleColor;
+}
+
+.logo {
+  height: 60px;
+  width: 180px;
+}
+
+.mat-mini-fab.mat-accent {
+  background-color: $secondColor !important;
+}
+
+.menu-image {
+  height: 6em;
+}
+
+.description-class {
+  font-size: 0.6em;
+  padding-left: 2px;
+  padding-right: 0;
+}
+
+.link-class {
+  padding: 7px 15px;
+  margin: 3px;
+}
+
+.menu-label {
+  color: $simpleColor;
+  font-size: 18px;
+  font-weight: bold;
+  padding-left: 2%;
+}

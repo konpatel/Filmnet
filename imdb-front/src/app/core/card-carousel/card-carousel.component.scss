@@ -1,0 +1,47 @@
+@import "src/styles/variables";
+
+.carousel-container {
+  padding-top: 2%;
+}
+
+.mat-icon {
+  color: $simpleColor;
+  font-size: 35px;
+  height: 30px;
+  width: 30px;
+}
+
+.carousel-title {
+  color: $simpleColor;
+  background-color: $logoMainColor;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.product-item {
+  .product-item-content {
+    text-align: center;
+    padding: 1rem 0;
+  }
+
+  .product-image {
+    width: 100%;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)
+  }
+}
+
+.header-container {
+  padding-left: 5em;
+}
+
+.label-class {
+  background-color: white;
+  color: $logoMainColor;
+  width: 220px;
+  padding: 15px 1px;
+  opacity: 0.6;
+}
+
+
+
+

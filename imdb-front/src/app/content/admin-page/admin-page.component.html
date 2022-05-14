@@ -1,0 +1,27 @@
+<div class="header-class">
+  <mat-icon style="margin-right: 1vm">control_camera</mat-icon>
+  Control panel
+</div>
+<div class="users-table">
+  <mat-table [dataSource]="dataSource">
+
+    <ng-container matColumnDef="email">
+      <mat-header-cell *matHeaderCellDef>EMAIL</mat-header-cell>
+      <mat-cell class="description-cell"
+                *matCellDef="let user"><span>{{user.username}}</span></mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+      <mat-header-cell *matHeaderCellDef>DELETE</mat-header-cell>
+      <mat-cell *matCellDef="let row" style="padding-left:1%">
+        <button mat-mini-fab (click)="openConfirmDialog(row)" class="delete-button">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+  </mat-table>
+</div>

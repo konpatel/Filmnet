@@ -1,0 +1,42 @@
+<mat-card class="common-card">
+  <mat-card-header>
+    <mat-card-title fxLayout="row" fxFlex fxLayoutAlign="space-between start">
+      <div fxLayout="row" fxFlex fxLayoutAlign="center start">
+      <span class="login-title">Sign in</span>
+      <div fxLayout="row" fxFlex fxLayoutAlign="end start">
+        <button mat-flat-button class="exit-button" (click)="close()">
+          <mat-icon>clear</mat-icon>
+        </button>
+      </div>
+      </div>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="loginForm" (ngSubmit)="login()" fxLayout="row wrap" fxLayoutAlign="space-around center">
+      <mat-form-field appearance="legacy" fxFlex="100">
+        <mat-label>Email</mat-label>
+        <input matInput type="text" autocomplete="doNotAutoComplete" [formControlName]="'email'" required>
+      </mat-form-field>
+
+      <mat-form-field appearance="legacy" fxFlex="100">
+        <mat-label>Password</mat-label>
+        <input matInput type="text" autocomplete="doNotAutoComplete" [formControlName]="'password'"
+               [type]="hide ? 'password' : 'text'"
+               required>
+        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </mat-form-field>
+
+      <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="end center">
+        <a class="forgot-password" (click)="openForgotPasswordDialog()">Forgot your password?</a>
+      </div>
+    </form>
+  </mat-card-content>
+  <div fxLayout="row wrap" fxLayoutAlign="start center">
+    <button fxFlex="100" mat-raised-button (click)="login()">Sign in</button>
+  </div>
+  <div fxLayout="row wrap" fxLayoutAlign="start center" style="padding-top: 5%" fxLayoutGap="1%">
+    <span fxFlex="100" class="create-class">Not having an account yet?</span>
+    <button fxFlex="100" class="register-button" mat-raised-button (click)="navigateToRegisterPage()">Create account
+    </button>
+  </div>
+</mat-card>

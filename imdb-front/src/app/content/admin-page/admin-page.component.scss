@@ -1,0 +1,20 @@
+@import "src/styles/variables";
+@import "src/styles/category-components";
+
+mat-table {
+  width: 100%;
+}
+
+.users-table {
+  width: 90%;
+  padding-top: 5%;
+  padding-left: 5%;
+}
+
+.mat-cell > span {
+  white-space: nowrap !important;
+  width: auto;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+

@@ -1,0 +1,65 @@
+@import "src/styles/variables";
+
+mat-toolbar {
+  max-height: 25%;
+  height: 20%;
+  background-color: $footerColor;
+  z-index: 100;
+  bottom: 0;
+  color: $simpleColor;
+  padding-top: 2%;
+  padding-bottom: 0;
+  margin-top: 2%;
+}
+
+.mat-toolbar-single-row {
+  background-color: $footerColor;
+}
+
+.copyright-class {
+  font-size: 14px;
+  font-weight: bolder;
+  padding-top: 2%;
+}
+
+.main-toolbar {
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+@media all and (max-width: 960px) {
+  .main-toolbar {
+    padding-left: 20%;
+  }
+}
+
+a {
+  color: $simpleColor;
+  text-decoration: none;
+  font-size: 12px;
+}
+
+.title-class {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.material-icons {
+  font-size: 15px;
+  color: $simpleColor;
+  width: 20px;
+}
+
+.logo {
+  height: 100px;
+  width: 100px;
+}
+
+.brand-class {
+  font-size: 25px;
+}
+
+.logo {
+  height: 70px;
+  width: 70px;
+}

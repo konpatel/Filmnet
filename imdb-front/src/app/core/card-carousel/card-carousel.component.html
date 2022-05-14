@@ -1,0 +1,19 @@
+<div class="carousel-container">
+  <div fxLayout="row" fxLayoutAlign="start center" class="header-container">
+    <div class="carousel-title">{{title}}</div>
+    <button *ngIf="categoryId" mat-icon-button (click)="navigateToCategory()">
+      <mat-icon>arrow_right_alt</mat-icon>
+    </button>
+  </div>
+  <p-carousel *ngIf="movieList.length !== 0" [value]="movieList" [numVisible]="5" [numScroll]="1"
+              [responsiveOptions]="responsiveOptions">
+    <ng-template let-item pTemplate="item">
+      <div class="product-item" fxLayout="column">
+        <div class="product-item-content">
+          <img (click)="navigateToDetailsPage(item.id)" style="height: 100%;"
+               [src]='"https://www.themoviedb.org/t/p/w220_and_h330_face"+item.posterPath'>
+        </div>
+      </div>
+    </ng-template>
+  </p-carousel>
+</div>

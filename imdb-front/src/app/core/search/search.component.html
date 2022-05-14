@@ -1,0 +1,12 @@
+<div class="search-container">
+  <mat-form-field appearance="legacy" [formGroup]="searchForm">
+    <mat-label>Search movies by title...</mat-label>
+    <input type="text"
+           autocomplete="off"
+           #searchInput
+           matInput
+           (keyup)="updateValue($event.target)"
+           [formControlName]="'word'">
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+</div>

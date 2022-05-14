@@ -1,0 +1,44 @@
+<mat-nav-list class="sidenav-list">
+  <a mat-list-item routerLink="/movies" (click)="onToggleClose()">
+    <mat-icon>movie</mat-icon>
+    <span>Movies</span>
+  </a>
+  <a mat-list-item routerLink="/people/Acting" (click)="onToggleClose()">
+    <mat-icon>people</mat-icon>
+    <span>Actors</span>
+  </a>
+  <a mat-list-item routerLink="/people/Director" (click)="onToggleClose()">
+    <mat-icon>people</mat-icon>
+    <span>Directors</span>
+  </a>
+  <app-security [roles]="'ROLE_USER,ROLE_ADMIN'">
+    <a mat-list-item routerLink="/personal-list" (click)="onToggleClose()">
+      <mat-icon>favorite</mat-icon>
+      <span>Watchlist</span>
+    </a>
+    <a mat-list-item routerLink="/notification-page" (click)="onToggleClose()">
+      <mat-icon [matBadgeHidden]="notificationsList.length ===0" class="badge-icon"
+                [matBadge]="notificationsList.length" matBadgeColor="warn">notifications
+      </mat-icon>
+      <span style="padding-left: 3%">Notifications</span>
+    </a>
+    <a mat-list-item (click)="onToggleClose();openConfirmDialog();">
+      <mat-icon>close</mat-icon>
+      <span>Deactivate account</span>
+    </a>
+  </app-security>
+  <a *ngIf="!isLoggedIn()" mat-list-item (click)="onToggleClose();login()">
+    <mat-icon>login</mat-icon>
+    <span>Sign in</span>
+  </a>
+  <app-security [roles]="'ROLE_ADMIN'">
+    <a mat-list-item routerLink="/admin-page" (click)="onToggleClose();">
+      <mat-icon>control_camera</mat-icon>
+      <span>Control panel</span>
+    </a>
+  </app-security>
+  <a *ngIf="isLoggedIn()" mat-list-item (click)="onToggleClose();logout();">
+    <mat-icon>logout</mat-icon>
+    <span>Sign out</span>
+  </a>
+</mat-nav-list>

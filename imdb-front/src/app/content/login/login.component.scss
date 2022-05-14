@@ -1,0 +1,26 @@
+@import "src/styles/variables";
+
+a {
+  color: $simpleColor;
+  font-size: 0.9em;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration-line: underline;
+}
+
+.login-title {
+  width: 100% !important;
+}
+
+.create-class {
+  color: $simpleColor;
+  text-align: center;
+  padding-bottom: 2%;
+  font-size: 0.9em;
+}
+
+.mat-icon {
+  color: $simpleColor !important;
+}

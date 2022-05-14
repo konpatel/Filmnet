@@ -1,0 +1,77 @@
+<mat-toolbar fxLayout="row wrap">
+  <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center start" fxLayoutAlign.lt-md="start stretch"
+       class="main-toolbar">
+    <div fxFlex="40" fxFlex.lt-md="60" fxFlex.lt-sm="100" fxLayout="column" fxLayoutAlign="start start">
+      <div class="title-class">CATEGORIES OF MOVIES</div>
+      <mat-list fxLayout="row wrap" fxLayoutAlign="start start">
+        <span fxFlex="25" fxFlex.lt-md="30" fxFlex.lt-sm="50"><mat-icon>navigate_next</mat-icon> <a
+          (click)="clickLinks()"
+          [routerLink]="['/category/', '12']">Adventure</a></span>
+        <span fxFlex="25" fxFlex.lt-md="30" fxFlex.lt-sm="50"><mat-icon>navigate_next</mat-icon> <a
+          (click)="clickLinks()"
+          [routerLink]="['/category/', '10749']">Romance</a></span>
+        <span fxFlex="25" fxFlex.lt-md="30" fxFlex.lt-sm="50"><mat-icon>navigate_next</mat-icon> <a
+          (click)="clickLinks()"
+          [routerLink]="['/category/', '14']">Fantasy</a></span>
+        <span fxFlex="25" fxFlex.lt-md="30" fxFlex.lt-sm="50"><mat-icon>navigate_next</mat-icon><a
+          (click)="clickLinks()"
+          [routerLink]="['/category/', '27']">Horror</a></span>
+        <span fxFlex="25" fxFlex.lt-md="30" fxFlex.lt-sm="50"><mat-icon>navigate_next</mat-icon><a
+          (click)="clickLinks()"
+          [routerLink]="['/category/', '16']">Animation</a></span>
+        <span fxFlex="25" fxFlex.lt-md="30" fxFlex.lt-sm="50"><mat-icon>navigate_next</mat-icon><a
+          (click)="clickLinks()"
+          [routerLink]="['/category/', '18']">Drama</a></span>
+        <span fxFlex="25" fxFlex.lt-md="30" fxFlex.lt-sm="50"><mat-icon>navigate_next</mat-icon><a
+          (click)="clickLinks()"
+          [routerLink]="['/category/', '28']">Action</a></span>
+        <span fxFlex="25" fxFlex.lt-md="30" fxFlex.lt-sm="50"><mat-icon>navigate_next</mat-icon> <a
+          (click)="clickLinks()"
+          [routerLink]="['/category/', '35']">Comedy</a></span>
+        <span fxFlex="25" fxFlex.lt-md="30" fxFlex.lt-sm="50"><mat-icon>navigate_next</mat-icon><a
+          (click)="clickLinks()"
+          [routerLink]="['/category/', '36']">History</a></span>
+        <span fxFlex="25" fxFlex.lt-md="30" fxFlex.lt-sm="50"><mat-icon>navigate_next</mat-icon> <a
+          (click)="clickLinks()"
+          [routerLink]="['/category/', '37']">Western</a></span>
+        <span fxFlex="25" fxFlex.lt-md="30" fxFlex.lt-sm="50"> <mat-icon>navigate_next</mat-icon><a
+          (click)="clickLinks()"
+          [routerLink]="['/category/', '80']">Crime</a></span>
+        <span fxFlex="25" fxFlex.lt-md="30" fxFlex.lt-sm="50"> <mat-icon>navigate_next</mat-icon> <a
+          (click)="clickLinks()"
+          [routerLink]="['/category/', '10770']">Thriller</a></span>
+      </mat-list>
+    </div>
+    <div fxFlex="20" fxFlex.lt-md="40" fxFlex.lt-sm="100">
+      <div class="title-class">TERMS OF USE</div>
+      <mat-list fxLayout="row wrap" fxLayoutAlign="start start">
+        <span fxFlex="55"><mat-icon>navigate_next</mat-icon> <a [routerLink]="['about-us']">About us</a></span>
+        <span fxFlex="55"><mat-icon>navigate_next</mat-icon> <a
+          [routerLink]="['terms']">Terms of Use</a></span>
+      </mat-list>
+    </div>
+    <div fxFlex="20" fxFlex.lt-md="50" fxLayout="row wrap" fxLayoutAlign="start start" fxFlex.lt-sm="100">
+      <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="start start">
+        <div fxFlex="100" class="title-class">CONTACT US</div>
+        <span fxFlex="100"><mat-icon> email</mat-icon>
+        <a href="mailto:filmnet@outlook.com.gr">filmnet@outlook.com.gr</a>
+          </span>
+      </div>
+    </div>
+
+    <div fxFlex.lt-md="50" fxLayout="row wrap" fxLayoutAlign="start start" fxFlex.lt-sm="100">
+      <div fxFlex="100" class="title-class">FOLLOW US</div>
+      <div fxFlex="100" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="5%">
+        <a class="brand-class" target="_blank" href="https://www.facebook.com/Filmnet-110616211449503">
+          <fa-icon icon="facebook"></fa-icon>
+        </a>
+        <a class="brand-class" target="_blank" href="https://twitter.com/TeamFilmnet">
+          <fa-icon icon="twitter"></fa-icon>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div fxFlex="100" class="copyright-class" fxLayout="row" fxLayoutAlign="center center">&copy;
+    Copyright {{currentYear}}, FilmNet
+  </div>
+</mat-toolbar>

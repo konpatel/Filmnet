@@ -1,0 +1,15 @@
+@import "src/styles/variables";
+
+.menu-class {
+  background-color: $backgroundColor;
+  font-size: 1.5em;
+  width: 100%;
+  position: relative;
+  margin-top: 1%;
+}
+
+.mat-menu-content:not(:empty) {
+  padding-bottom: 0 !important;
+  padding-top: 0 !important;
+}
+

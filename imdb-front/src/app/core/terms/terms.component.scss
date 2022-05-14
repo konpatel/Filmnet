@@ -1,0 +1,21 @@
+@import "src/styles/variables";
+
+.main-terms-class {
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
+.secondary-terms-class {
+  color: $simpleColor;
+  border: 2px solid $menuColor;
+  padding-left: 1%;
+  padding-right: 1%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+
+h2 {
+  color: $logoMainColor;
+}

@@ -1,0 +1,22 @@
+<div class="header-class">Search results</div>
+<div *ngIf="!noDataMessage" fxLayout="row wrap" fxLayoutAlign="space-around center" class="search-results-container">
+  <div class="middle" fxLayout="row wrap" fxFlex="100">
+    <mat-card class="info-widget" *ngFor="let movie of resultsArray" (click)="navigateToDetailsPage(movie.id)">
+      <mat-card-content>
+        <img mat-card-image [src]='"https://www.themoviedb.org/t/p/w220_and_h330_face"+movie.posterPath'>
+        <mat-label>{{movie.title}}</mat-label>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div fxFlex="100" *ngIf="resultsArray?.length != 0">
+    <mat-paginator [length]="length"
+                   [pageSize]="pageSize"
+                   [pageIndex]="pageIndex"
+                   (page)="handlePage($event)">
+    </mat-paginator>
+  </div>
+</div>
+
+<div *ngIf="noDataMessage" class="no-results-class">
+  No results found!
+</div>

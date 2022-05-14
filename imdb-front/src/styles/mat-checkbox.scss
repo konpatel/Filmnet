@@ -1,0 +1,19 @@
+@import "src/styles/variables";
+
+
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background,
+.mat-checkbox-checked.mat-accent .mat-checkbox-background {
+  background-color: $simpleColor !important;
+}
+
+.mat-checkbox-background{
+  background-color: $simpleColor !important;
+}
+
+.mat-checkbox {
+  color: $simpleColor;
+}
+
+.mat-checkbox-checkmark-path {
+  stroke: $logoSecondColor!important;
+}

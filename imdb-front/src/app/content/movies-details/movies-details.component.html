@@ -1,0 +1,55 @@
+<div fxLayout="column" fxLayoutAlign="start stretch">
+  <div fxLayout="row" fxLayoutAlign="start start" fxLayout.lt-md="column" fxLayoutAlign.lt-md="start center"
+       class="movie-class">
+    <div class="poster-class" fxFlex="40">
+      <img [src]='"https://www.themoviedb.org/t/p/w300_and_h450_bestv2"+movie?.posterPath'>
+    </div>
+    <div class="description-class" fxLayout="column" fxLayoutAlign="start" fxLayoutAlign.lt-md="center" fxLayoutGap="6%">
+      <span class="movie-title">{{movie?.title}} ({{releaseDate}})</span>
+
+      <div fxLayout="column" fxLayoutAlign="start" fxLayoutGap="1%" class="mobile-class">
+        <div class="paragraph-class-title">User Score</div>
+        <span class="paragraph-class-content">{{percent}}%</span>
+        <mat-progress-bar mode="determinate" value="{{percent}}"></mat-progress-bar>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="start start">
+        <button *ngIf="!isAddToFavourites" mat-mini-fab
+                [matTooltip]="'Click here to add this movie your favorite list'"
+                (click)="addToFavourites()">
+          <mat-icon>favorite</mat-icon>
+        </button>
+        <button *ngIf="isAddToFavourites" mat-mini-fab
+                [matTooltip]="'Click here to remove this movie your favorite list'"
+                (click)="removeFromFavourites()">
+          <mat-icon>check</mat-icon>
+        </button>
+
+        <button class="youtube-button" mat-raised-button (click)="openTrailerDialog(movie?.video.param)">
+          <mat-icon>play_arrow</mat-icon>
+          Play trailer
+        </button>
+      </div>
+
+      <div fxLayout="column" fxLayoutAlign="start" fxLayoutGap="1%">
+        <span class="paragraph-class-title">Categories</span>
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <div class="paragraph-class-content" *ngFor="let genre of movie?.genres; let i=index;">
+            {{genre?.name}}<span *ngIf="i+1 < genreEntries?.size">,</span>
+          </div>
+        </div>
+      </div>
+
+      <div fxLayout="column" fxLayoutAlign="start" fxLayoutGap="1%">
+        <span class="paragraph-class-title">Overview</span>
+        <span class="paragraph-class-content">{{movie?.overview}}</span>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="review-class">
+    <app-review [movie]="movie"></app-review>
+  </div>
+</div>

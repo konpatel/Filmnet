@@ -1,0 +1,42 @@
+@import "src/styles/variables";
+
+.exit-button {
+  background-color: $backgroundColor !important;
+  color: $simpleColor !important;
+  top: -10px;
+  left: 40px;
+
+  .mat-icon {
+    font-size: 25px !important;
+  }
+}
+
+@media all and(max-width: 255px) {
+  .exit-button {
+    left: 30px;
+  }
+}
+
+.common-card mat-card-header .mat-card-header-text {
+  width: 100%;
+}
+
+.common-card .mat-card-title {
+  text-align: center;
+  font-weight: bold;
+  margin-top: -20px;
+}
+
+.mat-card {
+  background-color: $backgroundColor;
+  color: $simpleColor;
+}
+
+.common-card .mat-card-title {
+  color: $simpleColor;
+}
+
+mat-card {
+  box-shadow: none!important;
+  border: none!important;
+}

@@ -1,0 +1,35 @@
+@import "src/styles/variables";
+
+.mat-paginator-page-size-label {
+  display: none;
+}
+
+.mat-paginator-page-size-value {
+  display: none;
+}
+
+.mat-paginator-range-label {
+  order: 2;
+  color: $logoMainColor;
+}
+
+.mat-paginator-navigation-previous {
+  order: 1;
+}
+
+mat-paginator .mat-icon-button {
+  background-color: $logoMainColor;
+  color: $simpleColor;
+}
+
+.mat-paginator-navigation-next {
+  order: 3;
+}
+
+.mat-paginator-outer-container {
+  background-color: $menuColor;
+}
+
+.mat-paginator-container {
+  justify-content: center !important;
+}

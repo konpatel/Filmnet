@@ -1,0 +1,17 @@
+@import "src/styles/variables";
+
+.sidenav-list span {
+  padding-left: 8px;
+}
+
+.sidenav-list {
+  background-color: $backgroundColor;
+}
+
+.mat-list-base .mat-list-item {
+  color: $simpleColor;
+}
+
+.mat-list-base .mat-list-item:hover {
+  color: $logoMainColor;
+}

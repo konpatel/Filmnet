@@ -1,0 +1,28 @@
+@import "src/styles/variables";
+
+div {
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+  cursor: pointer;
+  padding-top: 3%;
+}
+
+@media all and (max-width: 600px) {
+  div {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.active {
+  .mat-icon {
+    color: $logoSecondColor;
+  }
+}
+
+.hover {
+  .mat-icon {
+    color: $logoSecondColor;
+  }
+}

@@ -1,0 +1,28 @@
+@import "src/styles/variables";
+
+.common-dialog .mat-dialog-container {
+  background-color: $backgroundColor;
+  overflow-x: hidden;
+}
+
+.terms-dialog .mat-dialog-container {
+  background-color: $backgroundColor;
+  overflow-x: hidden;
+  overflow-y: auto;
+  max-height: 500px;
+  max-width: 450px;
+}
+
+.trailer-dialog .mat-dialog-container {
+  background-color: $backgroundColor;
+  width: 1200px;
+  min-height: 600px;
+  max-width: 1500px;
+  overflow-x: hidden;
+}
+
+.confirm-dialog .mat-dialog-container {
+  background-color: $backgroundColor;
+  overflow-x: hidden;
+}
+

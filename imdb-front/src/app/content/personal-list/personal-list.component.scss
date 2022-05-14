@@ -1,0 +1,64 @@
+@import "src/styles/variables";
+@import "src/styles/category-components";
+
+.middle {
+  float: left;
+  justify-content: center;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+mat-label {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  border: 1px solid $secondColor;
+  max-width: 100%;
+  word-wrap: break-word;
+  background-color: $secondColor;
+  color: $simpleColor;
+  height: 20%;
+  opacity: 0.7;
+  white-space: nowrap !important;
+  width: 230px;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.info-widget {
+  width: 200px;
+  max-width: 200px;
+  height: 310px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-right: 5px;
+  margin-left: 5px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.mat-card-content {
+  width: 100%;
+  min-height: calc(130px * 1.5);
+  height: calc(130px * 1.5);
+}
+
+.mat-card-img {
+  background-size: cover; /*this makes the image in src fit to the size specified below*/
+  width: 100%; /* Here you can use wherever you want to specify the width and also the height of the <img>*/
+  height: 100%;
+}
+
+.search-results-container {
+  padding-top: 2%;
+}
+
+
+.no-results-class {
+  font-size: 30px;
+  color: $logoMainColor;
+  text-align: center;
+  padding-top: 3%;
+}
+
+

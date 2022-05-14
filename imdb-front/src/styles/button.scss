@@ -1,0 +1,28 @@
+@import "src/styles/variables";
+
+.mat-raised-button {
+  background-color: $logoMainColor;
+  font-weight: bold;
+  color: $simpleColor;
+  border-radius: 20px !important;
+}
+
+.register-button {
+  background-color: $logoSecondColor;
+}
+
+.mat-mini-fab.mat-accent {
+  color: $simpleColor;
+  background-color: $logoMainColor;
+}
+
+.youtube-button {
+  color: $simpleColor;
+}
+
+.mat-flat-button {
+  height: 34px;
+  color: $logoMainColor;
+  font-weight: bold;
+  border-radius: 20px !important;
+}
